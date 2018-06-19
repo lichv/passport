@@ -3,10 +3,10 @@
 namespace Lichv\Passport\Http\Middleware;
 
 use Closure;
-use League\OAuth2\Server\ResourceServer;
+use Lichv\OAuth2\Server\ResourceServer;
 use Illuminate\Auth\AuthenticationException;
 use Lichv\Passport\Exceptions\MissingScopeException;
-use League\OAuth2\Server\Exception\OAuthServerException;
+use Lichv\OAuth2\Server\Exception\OAuthServerException;
 use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
 
 class CheckClientCredentials
@@ -14,14 +14,14 @@ class CheckClientCredentials
     /**
      * The Resource Server instance.
      *
-     * @var \League\OAuth2\Server\ResourceServer
+     * @var \Lichv\OAuth2\Server\ResourceServer
      */
     protected $server;
 
     /**
      * Create a new middleware instance.
      *
-     * @param  \League\OAuth2\Server\ResourceServer  $server
+     * @param  \Lichv\OAuth2\Server\ResourceServer  $server
      * @return void
      */
     public function __construct(ResourceServer $server)

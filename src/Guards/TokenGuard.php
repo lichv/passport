@@ -10,11 +10,11 @@ use Illuminate\Container\Container;
 use Lichv\Passport\TransientToken;
 use Lichv\Passport\TokenRepository;
 use Lichv\Passport\ClientRepository;
-use League\OAuth2\Server\ResourceServer;
+use Lichv\OAuth2\Server\ResourceServer;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Contracts\Encryption\Encrypter;
 use Illuminate\Contracts\Debug\ExceptionHandler;
-use League\OAuth2\Server\Exception\OAuthServerException;
+use Lichv\OAuth2\Server\Exception\OAuthServerException;
 use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
 
 class TokenGuard
@@ -22,7 +22,7 @@ class TokenGuard
     /**
      * The resource server instance.
      *
-     * @var \League\OAuth2\Server\ResourceServer
+     * @var \Lichv\OAuth2\Server\ResourceServer
      */
     protected $server;
 
@@ -57,7 +57,7 @@ class TokenGuard
     /**
      * Create a new token guard instance.
      *
-     * @param  \League\OAuth2\Server\ResourceServer  $server
+     * @param  \Lichv\OAuth2\Server\ResourceServer  $server
      * @param  \Illuminate\Contracts\Auth\UserProvider  $provider
      * @param  \Lichv\Passport\TokenRepository  $tokens
      * @param  \Lichv\Passport\ClientRepository  $clients

@@ -3,8 +3,8 @@
 namespace Lichv\Passport\Bridge;
 
 use Lichv\Passport\Passport;
-use League\OAuth2\Server\Entities\ClientEntityInterface;
-use League\OAuth2\Server\Repositories\ScopeRepositoryInterface;
+use Lichv\OAuth2\Server\Entities\ClientEntityInterface;
+use Lichv\OAuth2\Server\Repositories\ScopeRepositoryInterface;
 
 class ScopeRepository implements ScopeRepositoryInterface
 {

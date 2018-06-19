@@ -5,8 +5,8 @@ namespace Lichv\Passport\Bridge;
 use Illuminate\Database\Connection;
 use Illuminate\Contracts\Events\Dispatcher;
 use Lichv\Passport\Events\RefreshTokenCreated;
-use League\OAuth2\Server\Entities\RefreshTokenEntityInterface;
-use League\OAuth2\Server\Repositories\RefreshTokenRepositoryInterface;
+use Lichv\OAuth2\Server\Entities\RefreshTokenEntityInterface;
+use Lichv\OAuth2\Server\Repositories\RefreshTokenRepositoryInterface;
 
 class RefreshTokenRepository implements RefreshTokenRepositoryInterface
 {

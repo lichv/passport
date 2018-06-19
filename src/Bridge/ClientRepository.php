@@ -3,7 +3,7 @@
 namespace Lichv\Passport\Bridge;
 
 use Lichv\Passport\ClientRepository as ClientModelRepository;
-use League\OAuth2\Server\Repositories\ClientRepositoryInterface;
+use Lichv\OAuth2\Server\Repositories\ClientRepositoryInterface;
 
 class ClientRepository implements ClientRepositoryInterface
 {

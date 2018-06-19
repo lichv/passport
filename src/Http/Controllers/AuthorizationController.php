@@ -10,9 +10,9 @@ use Lichv\Passport\ClientRepository;
 use Illuminate\Database\Eloquent\Model;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response as Psr7Response;
-use League\OAuth2\Server\AuthorizationServer;
+use Lichv\OAuth2\Server\AuthorizationServer;
 use Illuminate\Contracts\Routing\ResponseFactory;
-use League\OAuth2\Server\RequestTypes\AuthorizationRequest;
+use Lichv\OAuth2\Server\RequestTypes\AuthorizationRequest;
 
 class AuthorizationController
 {
@@ -21,7 +21,7 @@ class AuthorizationController
     /**
      * The authorization server.
      *
-     * @var \League\OAuth2\Server\AuthorizationServer
+     * @var \Lichv\OAuth2\Server\AuthorizationServer
      */
     protected $server;
 
@@ -35,7 +35,7 @@ class AuthorizationController
     /**
      * Create a new controller instance.
      *
-     * @param  \League\OAuth2\Server\AuthorizationServer  $server
+     * @param  \Lichv\OAuth2\Server\AuthorizationServer  $server
      * @param  \Illuminate\Contracts\Routing\ResponseFactory  $response
      * @return void
      */
@@ -64,12 +64,10 @@ class AuthorizationController
 
             $scopes = $this->parseScopes($authRequest);
 
-            $token = $tokens->findValidToken(
-                $user = $request->user(),
-                $client = $clients->find($authRequest->getClient()->getIdentifier())
-            );
-
-            if ($token && $token->scopes === collect($scopes)->pluck('id')->all()) {
+            $user = $request->user();
+            $client = $clients->find($authRequest->getClient()->getIdentifier());
+            $token = $tokens->findValidToken($user,$client);
+            if (($token && $token->scopes === collect($scopes)->pluck('id')->all()) || $client->silence==1) {
                 return $this->approveRequest($authRequest, $user);
             }
 
@@ -87,7 +85,7 @@ class AuthorizationController
     /**
      * Transform the authorization requests's scopes into Scope instances.
      *
-     * @param  \League\OAuth2\Server\RequestTypes\AuthorizationRequest  $authRequest
+     * @param  \Lichv\OAuth2\Server\RequestTypes\AuthorizationRequest  $authRequest
      * @return array
      */
     protected function parseScopes($authRequest)
@@ -102,7 +100,7 @@ class AuthorizationController
     /**
      * Approve the authorization request.
      *
-     * @param  \League\OAuth2\Server\RequestTypes\AuthorizationRequest  $authRequest
+     * @param  \Lichv\OAuth2\Server\RequestTypes\AuthorizationRequest  $authRequest
      * @param  \Illuminate\Database\Eloquent\Model  $user
      * @return \Illuminate\Http\Response
      */

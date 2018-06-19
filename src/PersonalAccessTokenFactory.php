@@ -5,14 +5,14 @@ namespace Lichv\Passport;
 use Zend\Diactoros\Response;
 use Zend\Diactoros\ServerRequest;
 use Lcobucci\JWT\Parser as JwtParser;
-use League\OAuth2\Server\AuthorizationServer;
+use Lichv\OAuth2\Server\AuthorizationServer;
 
 class PersonalAccessTokenFactory
 {
     /**
      * The authorization server instance.
      *
-     * @var \League\OAuth2\Server\AuthorizationServer
+     * @var \Lichv\OAuth2\Server\AuthorizationServer
      */
     protected $server;
 
@@ -40,7 +40,7 @@ class PersonalAccessTokenFactory
     /**
      * Create a new personal access token factory instance.
      *
-     * @param  \League\OAuth2\Server\AuthorizationServer  $server
+     * @param  \Lichv\OAuth2\Server\AuthorizationServer  $server
      * @param  \Lichv\Passport\ClientRepository  $clients
      * @param  \Lichv\Passport\TokenRepository  $tokens
      * @param  \Lcobucci\JWT\Parser  $jwt

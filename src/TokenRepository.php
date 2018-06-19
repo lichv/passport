@@ -90,6 +90,11 @@ class TokenRepository
         return Passport::token()->where('id', $id)->update(['revoked' => true]);
     }
 
+    public function revokeAccessTokenByUUID($uuid)
+    {
+        return Passport::token()->where('uuid', $uuid)->update(['revoked' => true]);
+    }
+
     /**
      * Check if the access token has been revoked.
      *

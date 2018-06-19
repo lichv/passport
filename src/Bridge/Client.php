@@ -2,9 +2,9 @@
 
 namespace Lichv\Passport\Bridge;
 
-use League\OAuth2\Server\Entities\Traits\ClientTrait;
-use League\OAuth2\Server\Entities\Traits\EntityTrait;
-use League\OAuth2\Server\Entities\ClientEntityInterface;
+use Lichv\OAuth2\Server\Entities\Traits\ClientTrait;
+use Lichv\OAuth2\Server\Entities\Traits\EntityTrait;
+use Lichv\OAuth2\Server\Entities\ClientEntityInterface;
 
 class Client implements ClientEntityInterface
 {

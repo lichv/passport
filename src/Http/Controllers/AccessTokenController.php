@@ -6,7 +6,7 @@ use Lichv\Passport\TokenRepository;
 use Lcobucci\JWT\Parser as JwtParser;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response as Psr7Response;
-use League\OAuth2\Server\AuthorizationServer;
+use Lichv\OAuth2\Server\AuthorizationServer;
 
 class AccessTokenController
 {
@@ -15,7 +15,7 @@ class AccessTokenController
     /**
      * The authorization server.
      *
-     * @var \League\OAuth2\Server\AuthorizationServer
+     * @var \Lichv\OAuth2\Server\AuthorizationServer
      */
     protected $server;
 
@@ -36,7 +36,7 @@ class AccessTokenController
     /**
      * Create a new controller instance.
      *
-     * @param  \League\OAuth2\Server\AuthorizationServer  $server
+     * @param  \Lichv\OAuth2\Server\AuthorizationServer  $server
      * @param  \Lichv\Passport\TokenRepository  $tokens
      * @param  \Lcobucci\JWT\Parser  $jwt
      * @return void

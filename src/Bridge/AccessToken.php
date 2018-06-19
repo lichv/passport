@@ -2,10 +2,10 @@
 
 namespace Lichv\Passport\Bridge;
 
-use League\OAuth2\Server\Entities\Traits\EntityTrait;
-use League\OAuth2\Server\Entities\Traits\AccessTokenTrait;
-use League\OAuth2\Server\Entities\Traits\TokenEntityTrait;
-use League\OAuth2\Server\Entities\AccessTokenEntityInterface;
+use Lichv\OAuth2\Server\Entities\Traits\EntityTrait;
+use Lichv\OAuth2\Server\Entities\Traits\AccessTokenTrait;
+use Lichv\OAuth2\Server\Entities\Traits\TokenEntityTrait;
+use Lichv\OAuth2\Server\Entities\AccessTokenEntityInterface;
 
 class AccessToken implements AccessTokenEntityInterface
 {

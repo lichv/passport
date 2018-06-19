@@ -4,8 +4,8 @@ namespace Lichv\Passport\Bridge;
 
 use DateInterval;
 use Psr\Http\Message\ServerRequestInterface;
-use League\OAuth2\Server\Grant\AbstractGrant;
-use League\OAuth2\Server\ResponseTypes\ResponseTypeInterface;
+use Lichv\OAuth2\Server\Grant\AbstractGrant;
+use Lichv\OAuth2\Server\ResponseTypes\ResponseTypeInterface;
 
 class PersonalAccessGrant extends AbstractGrant
 {

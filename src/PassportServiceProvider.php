@@ -11,17 +11,17 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
 use Lichv\Passport\Guards\TokenGuard;
-use League\OAuth2\Server\CryptKey;
-use League\OAuth2\Server\ResourceServer;
+use Lichv\OAuth2\Server\CryptKey;
+use Lichv\OAuth2\Server\ResourceServer;
 use Illuminate\Config\Repository as Config;
-use League\OAuth2\Server\AuthorizationServer;
-use League\OAuth2\Server\Grant\AuthCodeGrant;
-use League\OAuth2\Server\Grant\ImplicitGrant;
-use League\OAuth2\Server\Grant\PasswordGrant;
+use Lichv\OAuth2\Server\AuthorizationServer;
+use Lichv\OAuth2\Server\Grant\AuthCodeGrant;
+use Lichv\OAuth2\Server\Grant\ImplicitGrant;
+use Lichv\OAuth2\Server\Grant\PasswordGrant;
 use Lichv\Passport\Bridge\PersonalAccessGrant;
-use League\OAuth2\Server\Grant\RefreshTokenGrant;
+use Lichv\OAuth2\Server\Grant\RefreshTokenGrant;
 use Lichv\Passport\Bridge\RefreshTokenRepository;
-use League\OAuth2\Server\Grant\ClientCredentialsGrant;
+use Lichv\OAuth2\Server\Grant\ClientCredentialsGrant;
 
 class PassportServiceProvider extends ServiceProvider
 {
@@ -128,7 +128,7 @@ class PassportServiceProvider extends ServiceProvider
     /**
      * Create and configure an instance of the Auth Code grant.
      *
-     * @return \League\OAuth2\Server\Grant\AuthCodeGrant
+     * @return \Lichv\OAuth2\Server\Grant\AuthCodeGrant
      */
     protected function makeAuthCodeGrant()
     {
@@ -140,7 +140,7 @@ class PassportServiceProvider extends ServiceProvider
     /**
      * Build the Auth Code grant instance.
      *
-     * @return \League\OAuth2\Server\Grant\AuthCodeGrant
+     * @return \Lichv\OAuth2\Server\Grant\AuthCodeGrant
      */
     protected function buildAuthCodeGrant()
     {
@@ -154,7 +154,7 @@ class PassportServiceProvider extends ServiceProvider
     /**
      * Create and configure a Refresh Token grant instance.
      *
-     * @return \League\OAuth2\Server\Grant\RefreshTokenGrant
+     * @return \Lichv\OAuth2\Server\Grant\RefreshTokenGrant
      */
     protected function makeRefreshTokenGrant()
     {
@@ -168,7 +168,7 @@ class PassportServiceProvider extends ServiceProvider
     /**
      * Create and configure a Password grant instance.
      *
-     * @return \League\OAuth2\Server\Grant\PasswordGrant
+     * @return \Lichv\OAuth2\Server\Grant\PasswordGrant
      */
     protected function makePasswordGrant()
     {
@@ -185,7 +185,7 @@ class PassportServiceProvider extends ServiceProvider
     /**
      * Create and configure an instance of the Implicit grant.
      *
-     * @return \League\OAuth2\Server\Grant\ImplicitGrant
+     * @return \Lichv\OAuth2\Server\Grant\ImplicitGrant
      */
     protected function makeImplicitGrant()
     {
@@ -195,7 +195,7 @@ class PassportServiceProvider extends ServiceProvider
     /**
      * Make the authorization service instance.
      *
-     * @return \League\OAuth2\Server\AuthorizationServer
+     * @return \Lichv\OAuth2\Server\AuthorizationServer
      */
     public function makeAuthorizationServer()
     {
@@ -227,7 +227,7 @@ class PassportServiceProvider extends ServiceProvider
      * Create a CryptKey instance without permissions check
      *
      * @param string $key
-     * @return \League\OAuth2\Server\CryptKey
+     * @return \Lichv\OAuth2\Server\CryptKey
      */
     protected function makeCryptKey($type)
     {

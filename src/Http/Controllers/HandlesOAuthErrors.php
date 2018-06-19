@@ -9,7 +9,7 @@ use Illuminate\Container\Container;
 use Illuminate\Contracts\Config\Repository;
 use Zend\Diactoros\Response as Psr7Response;
 use Illuminate\Contracts\Debug\ExceptionHandler;
-use League\OAuth2\Server\Exception\OAuthServerException;
+use Lichv\OAuth2\Server\Exception\OAuthServerException;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 
 trait HandlesOAuthErrors

@@ -2,9 +2,9 @@
 
 namespace Lichv\Passport\Bridge;
 
-use League\OAuth2\Server\Entities\Traits\EntityTrait;
-use League\OAuth2\Server\Entities\Traits\RefreshTokenTrait;
-use League\OAuth2\Server\Entities\RefreshTokenEntityInterface;
+use Lichv\OAuth2\Server\Entities\Traits\EntityTrait;
+use Lichv\OAuth2\Server\Entities\Traits\RefreshTokenTrait;
+use Lichv\OAuth2\Server\Entities\RefreshTokenEntityInterface;
 
 class RefreshToken implements RefreshTokenEntityInterface
 {

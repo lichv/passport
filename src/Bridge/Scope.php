@@ -2,8 +2,8 @@
 
 namespace Lichv\Passport\Bridge;
 
-use League\OAuth2\Server\Entities\Traits\EntityTrait;
-use League\OAuth2\Server\Entities\ScopeEntityInterface;
+use Lichv\OAuth2\Server\Entities\Traits\EntityTrait;
+use Lichv\OAuth2\Server\Entities\ScopeEntityInterface;
 
 class Scope implements ScopeEntityInterface
 {

@@ -12,7 +12,7 @@ trait RetrievesAuthRequestFromSession
      * Get the authorization request from the session.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \League\OAuth2\Server\RequestTypes\AuthorizationRequest
+     * @return \Lichv\OAuth2\Server\RequestTypes\AuthorizationRequest
      * @throws \Exception
      */
     protected function getAuthRequestFromSession(Request $request)

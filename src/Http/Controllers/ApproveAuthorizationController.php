@@ -4,7 +4,7 @@ namespace Lichv\Passport\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Zend\Diactoros\Response as Psr7Response;
-use League\OAuth2\Server\AuthorizationServer;
+use Lichv\OAuth2\Server\AuthorizationServer;
 
 class ApproveAuthorizationController
 {
@@ -13,14 +13,14 @@ class ApproveAuthorizationController
     /**
      * The authorization server.
      *
-     * @var \League\OAuth2\Server\AuthorizationServer
+     * @var \Lichv\OAuth2\Server\AuthorizationServer
      */
     protected $server;
 
     /**
      * Create a new controller instance.
      *
-     * @param  \League\OAuth2\Server\AuthorizationServer  $server
+     * @param  \Lichv\OAuth2\Server\AuthorizationServer  $server
      * @return void
      */
     public function __construct(AuthorizationServer $server)

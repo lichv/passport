@@ -2,10 +2,10 @@
 
 namespace Lichv\Passport\Bridge;
 
-use League\OAuth2\Server\Entities\Traits\EntityTrait;
-use League\OAuth2\Server\Entities\Traits\AuthCodeTrait;
-use League\OAuth2\Server\Entities\AuthCodeEntityInterface;
-use League\OAuth2\Server\Entities\Traits\TokenEntityTrait;
+use Lichv\OAuth2\Server\Entities\Traits\EntityTrait;
+use Lichv\OAuth2\Server\Entities\Traits\AuthCodeTrait;
+use Lichv\OAuth2\Server\Entities\AuthCodeEntityInterface;
+use Lichv\OAuth2\Server\Entities\Traits\TokenEntityTrait;
 
 class AuthCode implements AuthCodeEntityInterface
 {

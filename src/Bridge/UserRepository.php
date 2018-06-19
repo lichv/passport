@@ -5,8 +5,8 @@ namespace Lichv\Passport\Bridge;
 use RuntimeException;
 use Illuminate\Hashing\HashManager;
 use Illuminate\Contracts\Hashing\Hasher;
-use League\OAuth2\Server\Entities\ClientEntityInterface;
-use League\OAuth2\Server\Repositories\UserRepositoryInterface;
+use Lichv\OAuth2\Server\Entities\ClientEntityInterface;
+use Lichv\OAuth2\Server\Repositories\UserRepositoryInterface;
 
 class UserRepository implements UserRepositoryInterface
 {

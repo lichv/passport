@@ -6,9 +6,9 @@ use DateTime;
 use Lichv\Passport\TokenRepository;
 use Illuminate\Contracts\Events\Dispatcher;
 use Lichv\Passport\Events\AccessTokenCreated;
-use League\OAuth2\Server\Entities\ClientEntityInterface;
-use League\OAuth2\Server\Entities\AccessTokenEntityInterface;
-use League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface;
+use Lichv\OAuth2\Server\Entities\ClientEntityInterface;
+use Lichv\OAuth2\Server\Entities\AccessTokenEntityInterface;
+use Lichv\OAuth2\Server\Repositories\AccessTokenRepositoryInterface;
 
 class AccessTokenRepository implements AccessTokenRepositoryInterface
 {
@@ -53,16 +53,21 @@ class AccessTokenRepository implements AccessTokenRepositoryInterface
      */
     public function persistNewAccessToken(AccessTokenEntityInterface $accessTokenEntity)
     {
-        $this->tokenRepository->create([
+        $request = \Illuminate\Http\Request::capture();
+        $input = $request->all();
+        $data = [
             'id' => $accessTokenEntity->getIdentifier(),
             'user_id' => $accessTokenEntity->getUserIdentifier(),
             'client_id' => $accessTokenEntity->getClient()->getIdentifier(),
             'scopes' => $this->scopesToArray($accessTokenEntity->getScopes()),
             'revoked' => false,
+            'uuid'=>empty($input['uuid'])?'':$input['uuid'],
+            'user_agent'=>$request->header('user-agent'),
             'created_at' => new DateTime,
             'updated_at' => new DateTime,
             'expires_at' => $accessTokenEntity->getExpiryDateTime(),
-        ]);
+        ];
+        $this->tokenRepository->create($data);
 
         $this->events->dispatch(new AccessTokenCreated(
             $accessTokenEntity->getIdentifier(),
@@ -77,6 +82,11 @@ class AccessTokenRepository implements AccessTokenRepositoryInterface
     public function revokeAccessToken($tokenId)
     {
         $this->tokenRepository->revokeAccessToken($tokenId);
+    }
+
+    public function revokeAccessTokenByUUID($uuid)
+    {
+        $this->tokenRepository->revokeAccessTokenByUUID($uuid);
     }
 
     /**

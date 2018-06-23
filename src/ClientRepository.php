@@ -28,6 +28,11 @@ class ClientRepository
         return $client && ! $client->revoked ? $client : null;
     }
 
+    public function findKey($key){
+        $client = Passport::client()->where('key', $key)->first();
+        return $client && ! $client->revoked ? $client : null;
+    }
+
     /**
      * Get a client instance for the given ID and user ID.
      *
@@ -98,6 +103,7 @@ class ClientRepository
         $client = Passport::client()->forceFill([
             'user_id' => $userId,
             'name' => $name,
+            'key' => str_random(20),
             'secret' => str_random(40),
             'redirect' => $redirect,
             'personal_access_client' => $personalAccess,

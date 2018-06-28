@@ -109,6 +109,8 @@ class ClientRepository
             'personal_access_client' => $personalAccess,
             'password_client' => $password,
             'revoked' => false,
+            'silence' => 0,
+            'expire' => 0,
         ]);
 
         $client->save();

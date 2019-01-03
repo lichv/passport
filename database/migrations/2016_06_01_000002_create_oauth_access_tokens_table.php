@@ -17,10 +17,9 @@ class CreateOauthAccessTokensTable extends Migration
             $table->string('id', 100)->primary();
             $table->integer('user_id')->index()->nullable();
             $table->integer('client_id');
-            $table->string('uuid', 100);
             $table->string('name')->nullable();
             $table->text('scopes')->nullable();
-            $table->text('user_agent')->nullable();
+            $table->string('uuid',100)->nullable();
             $table->boolean('revoked');
             $table->timestamps();
             $table->dateTime('expires_at')->nullable();

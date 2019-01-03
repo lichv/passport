@@ -1,6 +1,6 @@
 {
     "name": "lichv/passport",
-    "description": "Laravel Passport provides OAuth2 server support to Laravel.",
+    "description": "Lichv Passport provides OAuth2 server support to Laravel.",
     "keywords": ["lichv", "passport", "oauth"],
     "license": "MIT",
     "support": {
@@ -9,8 +9,8 @@
     },
     "authors": [
         {
-            "name": "Taylor Otwell",
-            "email": "taylor@laravel.com"
+            "name": "Lichv",
+            "email": "contact@lichv.com"
         }
     ],
     "require": {

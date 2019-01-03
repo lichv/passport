@@ -17,6 +17,7 @@ class CreateOauthAuthCodesTable extends Migration
             $table->string('id', 100)->primary();
             $table->integer('user_id');
             $table->integer('client_id');
+            $table->string('uuid',100)->nullable();
             $table->text('scopes')->nullable();
             $table->boolean('revoked');
             $table->dateTime('expires_at')->nullable();

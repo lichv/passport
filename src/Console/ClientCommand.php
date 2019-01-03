@@ -16,6 +16,7 @@ class ClientCommand extends Command
     protected $signature = 'passport:client
             {--personal : Create a personal access token client}
             {--password : Create a password grant client}
+            {--client : Create a client credentials grant client}
             {--name= : The name of the client}';
 
     /**
@@ -41,6 +42,10 @@ class ClientCommand extends Command
             return $this->createPasswordClient($clients);
         }
 
+        if ($this->option('client')) {
+            return $this->createClientCredentialsClient($clients);
+        }
+
         $this->createAuthCodeClient($clients);
     }
 
@@ -58,11 +63,11 @@ class ClientCommand extends Command
         );
 
         $client = $clients->createPersonalAccessClient(
-            0, $name, 'http://localhost'
+            null, $name, 'http://localhost'
         );
 
         $this->info('Personal access client created successfully.');
-        $this->line('<comment>Client ID:</comment> '.$client->key);
+        $this->line('<comment>Client key:</comment> '.$client->key);
         $this->line('<comment>Client Secret:</comment> '.$client->secret);
     }
 
@@ -80,11 +85,11 @@ class ClientCommand extends Command
         );
 
         $client = $clients->createPasswordGrantClient(
-            0, $name, 'http://localhost'
+            null, $name, 'http://localhost'
         );
 
         $this->info('Password grant client created successfully.');
-        $this->line('<comment>Client ID:</comment> '.$client->key);
+        $this->line('<comment>Client key:</comment> '.$client->key);
         $this->line('<comment>Client Secret:</comment> '.$client->secret);
     }
 
@@ -114,7 +119,28 @@ class ClientCommand extends Command
         );
 
         $this->info('New client created successfully.');
-        $this->line('<comment>Client ID:</comment> '.$client->key);
+        $this->line('<comment>Client key:</comment> '.$client->key);
+        $this->line('<comment>Client secret:</comment> '.$client->secret);
+    }
+
+    /**
+     * Create a client credentials grant client.
+     *
+     * @param  \Lichv\Passport\ClientRepository  $clients
+     * @return void
+     */
+    protected function createClientCredentialsClient(ClientRepository $clients)
+    {
+        $name = $this->option('name') ?: $this->ask(
+            'What should we name the client?'
+        );
+
+        $client = $clients->create(
+            null, $name, ''
+        );
+
+        $this->info('New client created successfully.');
+        $this->line('<comment>Client key:</comment> '.$client->key);
         $this->line('<comment>Client secret:</comment> '.$client->secret);
     }
 }

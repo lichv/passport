@@ -44,7 +44,7 @@ class ClientRepository implements ClientRepositoryInterface
         // and verify the secret if necessary. If the secret is valid we will be ready to
         // return this client instance back out to the consuming methods and finish up.
         $client = new Client(
-            $record->id, $record->name, $record->redirect,$record->expire
+            $record->id, $record->name, $record->redirect, $record->silence, $record->expire, $record->refresh_expire
         );
 
         if ($mustValidateSecret &&

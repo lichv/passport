@@ -4,14 +4,21 @@ namespace Lichv\Passport;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AuthCode extends Model
+class RefreshToken extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'oauth_auth_codes';
+    protected $table = 'oauth_refresh_tokens';
+
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
 
     /**
      * The guarded attributes on the model.
@@ -46,12 +53,23 @@ class AuthCode extends Model
     public $timestamps = false;
 
     /**
-     * Get the client that owns the authentication code.
+     * Revoke the token instance.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return bool
      */
-    public function client()
+    public function revoke()
     {
-        return $this->belongsTo(Passport::clientModel());
+        return $this->forceFill(['revoked' => true])->save();
     }
+
+    /**
+     * Revoke the token instance.
+     *
+     * @return bool
+     */
+    public function revokeByUUID($uuid)
+    {
+        return $this->where('uuid',$uuid)->update(['revoked' => true]);
+    }
+
 }

@@ -109,6 +109,16 @@ class Token extends Model
     }
 
     /**
+     * Revoke the token instance.
+     *
+     * @return bool
+     */
+    public function revokeByUUID($uuid)
+    {
+        return $this->where('uuid',$uuid)->update(['revoked' => true]);
+    }
+
+    /**
      * Determine if the token is a transient JWT token.
      *
      * @return bool

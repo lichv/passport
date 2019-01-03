@@ -5,6 +5,7 @@ namespace Lichv\Passport\Http\Controllers;
 use Illuminate\Http\Request;
 use Lichv\Passport\Passport;
 use Lichv\Passport\Bridge\User;
+use Lichv\Passport\Bridge\Client;
 use Lichv\Passport\TokenRepository;
 use Lichv\Passport\ClientRepository;
 use Illuminate\Database\Eloquent\Model;
@@ -64,9 +65,12 @@ class AuthorizationController
 
             $scopes = $this->parseScopes($authRequest);
 
-            $user = $request->user();
-            $client = $clients->find($authRequest->getClient()->getIdentifier());
-            $token = $tokens->findValidToken($user,$client);
+            $token = $tokens->findValidToken(
+                $user = $request->user(),
+                $client = $clients->find($authRequest->getClient()->getIdentifier())
+            );
+            $authRequest->setClient(new Client($client->getKey(), $client->name, $client->redirectUri, $client->silence, $client->expire, $client->refresh_expire));
+
             if (($token && $token->scopes === collect($scopes)->pluck('id')->all()) || $client->silence==1) {
                 return $this->approveRequest($authRequest, $user);
             }
@@ -93,7 +97,7 @@ class AuthorizationController
         return Passport::scopesFor(
             collect($authRequest->getScopes())->map(function ($scope) {
                 return $scope->getIdentifier();
-            })->all()
+            })->unique()->all()
         );
     }
 

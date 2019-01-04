@@ -1,5 +1,8 @@
-扩展了laravel/passport的功能：
+# 扩展了laravel/passport的功能：
 1.对不同客户端静态授权，不必用户前台确认
+
 2.对不同客户端可设置不同的access_token和refresh_token的失效时间
+
 3.客户端保留id，添加key随机字符串，用于外部客户端标识
+
 4.模拟单点登陆，使用重定向授权时，认证服务端退出，可使相应的授权token同步失效

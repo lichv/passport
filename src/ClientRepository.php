@@ -131,6 +131,7 @@ class ClientRepository
             'revoked' => false,
             'silence' => 0,
             'expire' => 0,
+            'refresh_expire' => 0,
         ]);
 
         $client->save();

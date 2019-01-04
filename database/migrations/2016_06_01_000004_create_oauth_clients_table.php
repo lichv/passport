@@ -25,7 +25,7 @@ class CreateOauthClientsTable extends Migration
             $table->boolean('revoked');
             $table->boolean('silence');
             $table->boolean('expire');
-	    $table->boolean('refresh_expire');
+            $table->boolean('refresh_expire');
             $table->timestamps();
         });
     }

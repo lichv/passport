@@ -1,5 +1,6 @@
 
 扩展了laravel/passport的功能：
+
 1.对不同客户端可以设置静默授权，不必用户前台确认
 
 2.对不同客户端可设置不同的access_token和refresh_token的失效时间
